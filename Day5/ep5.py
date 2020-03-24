@@ -125,7 +125,6 @@ plt.show()
 df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day4/train.csv')
 gb_pclass = df.groupby(['Pclass']).mean()
 gb_pclass = gb_pclass['Fare']
-print(gb_pclass)
 plt.bar(gb_pclass.index, gb_pclass.values)
 plt.xticks(gb_pclass.index, gb_pclass.index)
 plt.show()
@@ -148,7 +147,6 @@ sr_lastname = df['Name'].apply(lambda x: x.split(',')[0])
 df['Lastname'] = sr_lastname
 df = df.groupby(['Lastname']).count()
 output = df[df['Name']>1]['Name']
-print(output)
 plt.bar(output.index, output.values)
 plt.xticks(output.index, output.index)
 plt.show()
