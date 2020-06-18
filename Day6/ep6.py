@@ -3,6 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+print('test')
+
 # Score = [90,80,100,50]
 # Name = ["Tanawat","Ice","Point","Dmn4t"]
 # Serie1 = pd.Series(data=Score, index=Name)
