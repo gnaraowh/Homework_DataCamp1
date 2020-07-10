@@ -3,53 +3,110 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-print('test')
+pd.set_option('display.max_rows', None, 'display.max_columns', None)
 
-# Score = [90,80,100,50]
-# Name = ["Tanawat","Ice","Point","Dmn4t"]
-# Serie1 = pd.Series(data=Score, index=Name)
-# print(Serie1)
+#---------------------------------------- QUIZ1 ----------------------------------------#
+idx = ['A', 'B', 'C', 'D']
+col_year = np.arange(2014, 2017+1)
+col_income = np.random.randint(50, 500, 4)
+data = {'year': col_year, 'income': col_income}
+df = pd.DataFrame(data, index=idx)
 
-# sns.barplot(Serie1.values, Serie1.index)
-# plt.show()
+#---------------------------------------- QUIZ2 ----------------------------------------#
+sns.barplot(data=df, x=df.index, y='income')
+plt.show()
+sns.barplot(data=df, y=df.index, x='income')
+plt.show()
 
-# values = np.random.randint(40,100,(4,4))
-# rows = ["Tanawat","Ice","Point","Dmn4t"]
-# cols = ["mid1","mid2","final1","final2"]
-# df = pd.DataFrame(values, rows, cols)
-# print(df)
-# #sns.barplot(x=df.index,y="mid1",data=df)
-# sns.scatterplot(x="mid1",y=df.index,data=df)
-# plt.show()
+#---------------------------------------- QUIZ3 ----------------------------------------#
+sns.scatterplot(data=df, x=df.index, y='income')
+plt.show()
+sns.scatterplot(data=df, y=df.index, x='income')
+plt.show()
 
-# df = pd.read_csv("https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day6/Automobile_data.csv")
-# #print(df)
+df = pd.read_csv(
+   'https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day4/train.csv')
+#---------------------------------------- QUIZ4 ----------------------------------------#
+sns.countplot(data=df,x='Embarked')
+plt.show()
+sns.countplot(data=df,y='Embarked')
+plt.show()
 
-# fig = plt.figure(figsize=(10,8))
-# #sns.countplot(x="make", data=df)
-# sns.countplot(x="body-style",data=df)
-# fig.autofmt_xdate()
-# plt.show()
+#---------------------------------------- QUIZ5 ----------------------------------------#
+sns.countplot(data=df,x='Pclass')
+plt.show()
+sns.countplot(data=df,y='Pclass')
+plt.show()
 
-# score = np.array([1,2,5,6,7,9,12,15,18,19,27]) #Student Score Max 30
-# min_score = score.min() # 1
-# max_score = score.max() # 27
-# range_score = score.ptp()# 27-1 (Max - Min)
-# median_score = np.median(score)# 9
-# q1 = 5 # median(1,2,5,6,7)
-# q2 = median_score
-# q3 = 18 # median(12,15,18,19,27)
-# iqr = q3 - q1 # 13
-# arr_median = np.where(score == median_score)
+#---------------------------------------- QUIZ6 ----------------------------------------#
+sns.boxplot(data=df,x='Sex',y='Fare')
+plt.show()
 
-# print(arr_median[0])
+#---------------------------------------- QUIZ7 ----------------------------------------#
+sns.boxplot(data=df,x='Pclass',y='Fare')
+plt.show()
 
-src = "https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day6/Automobile_data.csv"
-df = pd.read_csv(src,na_values={'price':["?"]})
-df['price'] = pd.to_numeric(df['price'])
+# #---------------------------------------- QUIZ8 ----------------------------------------#
+# ข้อมูลไม่ได้ระบุจุดหมายปลายทาง มีแต่ ขึ้นเรือที่ไหน
+sns.barplot(data=df,x='Embarked',y='Fare')
+plt.show()
 
-fig = plt.figure(figsize=(12,8))
-sns.boxplot(x='make',y='price',data=df)
+#---------------------------------------- QUIZ9 ----------------------------------------#
+sns.barplot(data=df,x='Pclass',y='Age')
+plt.show()
 
-fig.autofmt_xdate()
+#---------------------------------------- QUIZ10 ----------------------------------------#
+sns.stripplot(data=df,x='Pclass',y='Fare')
+plt.show()
+
+#---------------------------------------- QUIZ11 ----------------------------------------#
+sns.stripplot(data=df,x='Survived',y='Age', hue='Sex')
+plt.show()
+
+#---------------------------------------- QUIZ12 ----------------------------------------#
+sns.swarmplot(data=df, x='Sex', y='Age')
+plt.show()
+
+#---------------------------------------- QUIZ13 ----------------------------------------#
+check = pd.crosstab(df['Pclass'], df['Sex'])
+sns.heatmap(check, cmap='coolwarm', annot=True)
+plt.show()
+
+#---------------------------------------- QUIZ14 ----------------------------------------#
+check = pd.pivot_table(data=df, index='Pclass', columns=['Sex'], values='Fare')
+sns.heatmap(check, cmap='coolwarm', annot=True)
+plt.show()
+
+#---------------------------------------- QUIZ15 ----------------------------------------#
+check = pd.pivot_table(data=df, index='Pclass', columns=['Sex'], values='Fare')
+sns.heatmap(check, cmap='coolwarm', annot=True, linecolor='white', linewidth=2)
+plt.show()
+
+df = df.drop(['PassengerId'], axis=1)
+#---------------------------------------- QUIZ16 ----------------------------------------#
+df_corr = df.corr()
+sns.heatmap(df_corr, cmap='coolwarm', annot=True)
+plt.show()
+
+#---------------------------------------- QUIZ17 ----------------------------------------#
+df_corr = df.corr()
+sns.clustermap(df_corr, cmap='coolwarm', annot=True)
+plt.show()
+
+#---------------------------------------- QUIZ18 ----------------------------------------#
+sns.scatterplot(data=df_corr, x='SibSp', y='Parch')
+plt.show()
+
+#---------------------------------------- QUIZ19 ----------------------------------------#
+sns.scatterplot(data=df, x='Pclass', y='Fare', hue='Sex')
+plt.show()
+
+#---------------------------------------- QUIZ20 ----------------------------------------#
+sns.distplot(df['Fare'])
+plt.show()
+sns.distplot(df['Age'])
+plt.show()
+
+#---------------------------------------- QUIZ21 ----------------------------------------#
+sns.pairplot(df)
 plt.show()
