@@ -25,42 +25,42 @@ sns.scatterplot(data=df, y=df.index, x='income')
 plt.show()
 
 df = pd.read_csv(
-   'https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day4/train.csv')
+    'https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/__Data/train.csv')
 #---------------------------------------- QUIZ4 ----------------------------------------#
-sns.countplot(data=df,x='Embarked')
+sns.countplot(data=df, x='Embarked')
 plt.show()
-sns.countplot(data=df,y='Embarked')
+sns.countplot(data=df, y='Embarked')
 plt.show()
 
 #---------------------------------------- QUIZ5 ----------------------------------------#
-sns.countplot(data=df,x='Pclass')
+sns.countplot(data=df, x='Pclass')
 plt.show()
-sns.countplot(data=df,y='Pclass')
+sns.countplot(data=df, y='Pclass')
 plt.show()
 
 #---------------------------------------- QUIZ6 ----------------------------------------#
-sns.boxplot(data=df,x='Sex',y='Fare')
+sns.boxplot(data=df, x='Sex', y='Fare')
 plt.show()
 
 #---------------------------------------- QUIZ7 ----------------------------------------#
-sns.boxplot(data=df,x='Pclass',y='Fare')
+sns.boxplot(data=df, x='Pclass', y='Fare')
 plt.show()
 
 # #---------------------------------------- QUIZ8 ----------------------------------------#
 # ข้อมูลไม่ได้ระบุจุดหมายปลายทาง มีแต่ ขึ้นเรือที่ไหน
-sns.barplot(data=df,x='Embarked',y='Fare')
+sns.barplot(data=df, x='Embarked', y='Fare')
 plt.show()
 
 #---------------------------------------- QUIZ9 ----------------------------------------#
-sns.barplot(data=df,x='Pclass',y='Age')
+sns.barplot(data=df, x='Pclass', y='Age')
 plt.show()
 
 #---------------------------------------- QUIZ10 ----------------------------------------#
-sns.stripplot(data=df,x='Pclass',y='Fare')
+sns.stripplot(data=df, x='Pclass', y='Fare')
 plt.show()
 
 #---------------------------------------- QUIZ11 ----------------------------------------#
-sns.stripplot(data=df,x='Survived',y='Age', hue='Sex')
+sns.stripplot(data=df, x='Survived', y='Age', hue='Sex')
 plt.show()
 
 #---------------------------------------- QUIZ12 ----------------------------------------#
