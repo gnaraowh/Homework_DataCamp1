@@ -87,3 +87,34 @@ df['horsepower'] = pd.to_numeric(df['horsepower'])
 #                                 x=df3.columns,
 #                                 y=df3.index, colorscale='Picnic'))
 # fig.show()
+
+# fig = px.choropleth(locations=['CA','TX','NY'],locationmode='USA-states', color=[1,2,3], scope='usa')
+# fig.show()
+
+# df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')#export argiculture of usa
+# df.head()
+# for col in df.columns:
+#     df[col] = df[col].astype(str)
+# df['text'] = df['state'] + '<br>'\
+#     +'beef ' + df['beef'] + ' Diary ' + df['dairy'] + '<br>'\
+#     +'Fruits ' + df['total fruits'] + ' Veggies ' + df['total veggies'] + '<br>'\
+#     +'Wheat ' + df['wheat'] + ' Corn ' + df['corn']
+# fig = go.Figure(data=go.Choropleth(
+#     locations=df['code']
+#     , z= df['total exports']
+#     , locationmode = 'USA-states'
+#     , colorscale = 'Picnic'
+#     , colorbar_title = 'Millions USD'
+#     , text=df['text']
+# ))
+# fig.update_layout(title_text='2011 US exports',geo_scope='usa')
+# fig.show()
+
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')#export argiculture of usa
+fig = go.Figure(data=go.Choropleth(
+    locations=df['CODE']
+    , z= df['GDP (BILLIONS)']
+    , colorscale = 'Picnic'
+    , text=df['COUNTRY']
+))
+fig.show()
