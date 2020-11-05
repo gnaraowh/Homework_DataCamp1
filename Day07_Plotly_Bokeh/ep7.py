@@ -42,10 +42,10 @@ except Exception as e:
         'num-of-doors': ['?'],
         'peak-rpm': ['?'],
         'price': ['?']
-    }
+        }
     )
-df['price'] = pd.to_numeric(df['price'])
-df['horsepower'] = pd.to_numeric(df['horsepower'])
+# df['price'] = pd.to_numeric(df['price'])
+# df['horsepower'] = pd.to_numeric(df['horsepower'])
 # fig = px.line(df, x='horsepower', y='price',title='Avg of Horsepower')
 # fig.show()
 
@@ -83,7 +83,7 @@ df['horsepower'] = pd.to_numeric(df['horsepower'])
 # fig.show()
 
 # df3 = df.pivot_table(index='body-style',columns='drive-wheels', values='price')
-# fig = go.Figure(data=go.Heatmap(z=df3, 
+# fig = go.Figure(data=go.Heatmap(z=df3,
 #                                 x=df3.columns,
 #                                 y=df3.index, colorscale='Picnic'))
 # fig.show()
@@ -110,11 +110,49 @@ df['horsepower'] = pd.to_numeric(df['horsepower'])
 # fig.update_layout(title_text='2011 US exports',geo_scope='usa')
 # fig.show()
 
-df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')#export argiculture of usa
-fig = go.Figure(data=go.Choropleth(
-    locations=df['CODE']
-    , z= df['GDP (BILLIONS)']
-    , colorscale = 'Picnic'
-    , text=df['COUNTRY']
-))
-fig.show()
+# df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')#export argiculture of usa
+# fig = go.Figure(data=go.Choropleth(
+#     locations=df['CODE']
+#     , z= df['GDP (BILLIONS)']
+#     , colorscale = 'Picnic'
+#     , text=df['COUNTRY']
+# ))
+# fig.show()
+
+pd.set_option('display.max_rows', None, 'display.max_columns', None)
+
+#---------------------------------------- QUIZ1 ----------------------------------------#
+rows = ['A', 'B', 'C', 'D', 'E']
+cols = ['2016', '2017', '2018', '2019', '2020']
+
+value_2020 = [10000, 20000, 30000, 40000, 60000]
+values = []
+for i in range(0, len(rows)):
+    v_rows = []
+    for j in range(0, len(cols)):
+        salary = value_2020[i]/(1.07**(len(cols)-1-j))
+        v_rows.append(salary)
+    values.append(v_rows)
+df = pd.DataFrame(values, rows, cols)
+#print(df)
+
+#---------------------------------------- QUIZ2 ----------------------------------------#
+df2 = pd.DataFrame.copy(df)
+df2['2017'] = df2['2017']*2
+#print(df2)
+fig = px.bar(df2, x=df2['2017'], y=df2.index)
+fig.update_layout(xaxis_tickangle=-45)
+# fig.show()
+
+#---------------------------------------- QUIZ3 ----------------------------------------#
+cols = ['2016', '2017', '2018', '2019', '2020','mean']
+df3 = pd.DataFrame.copy(df)
+df3['mean'] = df3.mean(axis=1)
+df3['2017'] = df3['2017']*2
+fig = px.bar(df3, x=df3['2017'], y=df3.index, hover_data=cols, labels={'index':'ชื่อ','2017':'เงินเดือนปี 2017 x 2'},color='2016')
+fig.update_layout(xaxis_tickangle=-45)
+#fig.show()
+
+#---------------------------------------- QUIZ3 ----------------------------------------#
+df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/__Data/train.csv')
+print(df)

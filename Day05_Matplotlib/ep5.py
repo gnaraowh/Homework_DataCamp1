@@ -91,7 +91,7 @@ ax2.legend(["legend2"])
 plt.show()
 
 #---------------------------------------- QUIZ9 ----------------------------------------#
-df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day4/train.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/__Data/train.csv')
 gb_pclass = df.groupby(['Pclass']).count()
 gb_pclass = gb_pclass['PassengerId']
 plt.figure(figsize=[5,5])
@@ -100,7 +100,7 @@ plt.pie(gb_pclass.values,labels=label)
 plt.show()
 
 #---------------------------------------- QUIZ10 ----------------------------------------#
-df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day4/train.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/__Data/train.csv')
 gb_pclass = df.groupby(['Embarked']).count()
 gb_pclass = gb_pclass['PassengerId']
 plt.figure(figsize=[5,5])
@@ -110,19 +110,19 @@ plt.pie(gb_pclass.values,labels=label,explode=explode)
 plt.show()
 
 #---------------------------------------- QUIZ11 ----------------------------------------#
-df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day4/train.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/__Data/train.csv')
 plt.hist(df['Fare'].values)
 plt.show()
 
 #---------------------------------------- QUIZ12 ----------------------------------------#
-df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day4/train.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/__Data/train.csv')
 avg = df['Age'].mean()
 df['Age'].fillna(value=avg, inplace=True)
 plt.scatter(df['Age'].values, df['Fare'].values)
 plt.show()
 
 #---------------------------------------- QUIZ13 ----------------------------------------#
-df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day4/train.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/__Data/train.csv')
 gb_pclass = df.groupby(['Pclass']).mean()
 gb_pclass = gb_pclass['Fare']
 plt.bar(gb_pclass.index, gb_pclass.values)
@@ -130,7 +130,7 @@ plt.xticks(gb_pclass.index, gb_pclass.index)
 plt.show()
 
 #---------------------------------------- QUIZ14 ----------------------------------------#
-df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day4/train.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/__Data/train.csv')
 clean_age = df[df['Age']<1]['Age'].apply(lambda x: x*100)
 avg = df['Age'].mean()
 df['Age'].fillna(value=avg, inplace=True)
@@ -142,7 +142,7 @@ plt.xticks(gb_pclass.index, np.round(gb_pclass.index,2))
 plt.show()
 
 #---------------------------------------- QUIZ15 ----------------------------------------#
-df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day4/train.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/__Data/train.csv')
 sr_lastname = df['Name'].apply(lambda x: x.split(',')[0])
 df['Lastname'] = sr_lastname
 df = df.groupby(['Lastname']).count()
@@ -156,18 +156,18 @@ fig = plt.figure()
 fig.subplots_adjust(hspace=1,wspace=0)
 
 ax1 = fig.add_subplot(131,title="Age Scatter",xlabel="Age",ylabel="Fare")
-df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day4/train.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/__Data/train.csv')
 avg = df['Age'].mean()
 df['Age'].fillna(value=avg, inplace=True)
 ax1.scatter(df['Age'].values, df['Fare'].values)
 
 ax2 = fig.add_subplot(222,title="Fare Histogram",xlabel="Fare",ylabel="Fare")
-df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day4/train.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/__Data/train.csv')
 ax2.hist(df['Fare'].values)
 ax2.plot(y,x,c="r")
 
 ax3 = fig.add_subplot(224,title="Embarked Pie")
-df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/Day4/train.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/__Data/train.csv')
 gb_pclass = df.groupby(['Embarked']).count()
 gb_pclass = gb_pclass['PassengerId']
 label = gb_pclass.index
