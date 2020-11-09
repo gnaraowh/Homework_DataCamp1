@@ -142,7 +142,7 @@ fig = px.box(df, x='Survived',y='Age',color_discrete_sequence=px.colors.cyclical
 fig.show()
 
 #---------------------------------------- QUIZ16 ----------------------------------------#
-# โจทย์ ถามหาจุดหมายปลายทางซึ่งไม่มีใน data เลยใส่ ข้อมูล Embarked ขึ้นเรื่อจากท่า แทน
+# โจทย์ ถามหาจุดหมายปลายทางซึ่งไม่มีใน data เลยใส่ ข้อมูล Embarked ขึ้นเรือจากท่า แทน
 df = pd.read_csv(
     'https://raw.githubusercontent.com/gnaraowh/Homework_DataCamp1/master/__Data/train.csv')
 df = df.groupby('Embarked').std()
